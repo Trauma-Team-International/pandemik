@@ -26,7 +26,7 @@ Pandemik helps researchers and decision makers answer the question **_"which beh
 
 Pandemik brings together gold standard behavior change, epidemic, and capacity modelling capabilities into an end-to-end simulation pipeline. The modelling pipeline connects behavior change and mitigation actions with public health, economic, and psychological outcomes. 
 
-A [recent study](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3561560) suggests that non-pharmaceutical interventions (NPIs) can lead to favorable economic outcomes when appropriately planned. These findings suggest that it's possible to optimize mitigation efforts in a manner that is favorable towards the epidemic and economics. 
+A [recent study](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3561560) suggests that non-pharmaceutical interventions (NPIs) can lead to favorable economic outcomes when appropriately planned. These findings suggest that it's possible to optimize mitigation efforts in a manner that is favorable towards both epidemic and economics. 
 
 In our research, we have found broad discrapency between behaviors in terms of the associated negative economic and psychological even though the difference in epidemic effect may be insignificant. 
 
