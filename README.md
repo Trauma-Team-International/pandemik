@@ -37,9 +37,9 @@ Pandemik consists of six stand-alone models, each representing a progression fro
 stage | name | focus | method 
 --- | --- | --- | --- 
 1 | country social model | models relevant socio-cultural at a country level | [Hofstede Model](https://www.hofstede-insights.com/product/compare-countries/)
-2 | behavioral model | model effects of behaviors | restriction of behavior  | custom differential model
+2 | behavioral model | model effects of behaviors | restriction of behavior  | custom model
 3 | epidemic model (SEIR) | from population to infection | [SEIR](http://www.public.asu.edu/~hnesse/classes/seir.html)
-4 | hospitalization model | from infection to hospital | custom differential model
+4 | hospitalization model | from infection to hospital | custom model
 5 | ICU burden model | from hospital to ICU and release or death | [ICUSIM](https://github.com/autonomio/ICUSIM)
 6 | output model | summarize results | sensitivity analysis
 
