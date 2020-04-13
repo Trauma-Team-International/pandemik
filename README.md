@@ -20,45 +20,51 @@
 </p>
 <hr>
 <p align="center">
-Pandemik is an end-to-end pipeline for simulating behavior change and mitigation effects on economics, psychology, ICU occupancy and death </p>
+Pandemik is an end-to-end pipeline for simulating behavior change and mitigation effects on **public health, economic, and psychological outcomes**.</p>
 <hr>
 
 ### What?
 
-Pandemik helps researchers and decision makers answer the question **_"which behavior changes and mitigations are most likely to yield favorable epidemic, economic, and psychological outcomes"_**.
+Pandemik helps researchers and decision makers answer the question **_"which behavior changes and mitigations are most likely to yield favorable public health, economic, and psychological outcomes"_**.
 
-Pandemik brings together gold standard behavior change, epidemy, and capacity simulation capabilities to an end-to-end simulation pipeline that connects behavior change and mitigation actions with economic, psychological, healthcare capacity, and population survival outcomes. 
+Pandemik brings together gold standard behavior change, epidemic, and capacity modelling capabilities into an end-to-end simulation pipeline. The modelling pipeline connects behavior change and mitigation actions with public health, economic, and psychological outcomes. 
 
 A [recent study](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3561560) suggests that non-pharmaceutical interventions (NPIs) can lead to favorable economic outcomes when appropriately planned. 
 
 ### How? 
 
-stage | name | focus | input | output
---- | --- | --- | --- | ---- | ---
-1 | country social model | models relevant socio-cultural at a country level | name of the country | weight
-2 | behavioral model | model effects of behaviors | restriction of behavior  | `beta` for SEIR, economic and psychological damage
-3 | epidemic model (SEIR) | from population to infection | standard SEIR | number of infectious
-4 | hospitalization model | from infection to hospital | number of infected | number of hospitalized
-5 | ICU burden model | from hospital to ICU and release or death | number of hospitalized | ICU demand and fatality
-6 | output model | summarize results | various | list of behaviors, economic, psychological, and health outcomes 
+Pandemik consists of six stand-alone models, each representing a progression from behavior change and mitigation towards the final outcome - a visualized "map" of the relationship different behaviors have with favorable outcomes. Results are presented with sensitivities and confidence intervals. 
 
-dramatically simplifies the process ICU demand, capacity, and fatality simulation. The simulation is based on a logic that closely resembles the current empirical understanding of the problem. The power of Monte Carlo simulation can be summarized in two points: 
+stage | name | focus | method 
+--- | --- | --- | --- 
+1 | country social model | models relevant socio-cultural at a country level | [Hofstede Model](https://www.hofstede-insights.com/product/compare-countries/)
+2 | behavioral model | model effects of behaviors | restriction of behavior  | custom differential model
+3 | epidemic model (SEIR) | from population to infection | [SEIR](http://www.public.asu.edu/~hnesse/classes/seir.html)
+4 | hospitalization model | from infection to hospital | custom differential model
+5 | ICU burden model | from hospital to ICU and release or death | [ICUSIM](https://github.com/autonomio/ICUSIM)
+6 | output model | summarize results | sensitivity analysis
 
-- Input parameter ranges are based on empirical evidence
-- There is no ambiquity in terms of results
+Each stage accepts inputs, sometimes from one of the preceding steps. Each step gives an output which used by one of the following steps. 
 
-**Fig 1:** An example of simulation result where we test how often peak daily demand for standard ICU capacity stays below 278 (the official forecast of THL in Finland). 
-
-<img src=https://media.discordapp.net/attachments/696359200774684745/698103055803220019/9jMw10xwcwAAAABJRU5ErkJggg.png>
-
-This allows the consumer of the information to establish their own point-of-view regarding how likely a certain outcome may be. The Monte Carlo method entirely takes away doubt from the question "given a range of parameters, how often so and so values appear".
+stage | name | input | output
+--- | --- | --- | ---
+1 | country social model | name of the country | weight
+2 | behavioral model | restriction of behavior  | `beta` for SEIR, economic and psychological damage
+3 | epidemic model (SEIR) | standard SEIR | number of infectious
+4 | hospitalization model | number of infected | number of hospitalized
+5 | ICU burden model | number of hospitalized | ICU demand and fatality
+6 | output model | various | list of behaviors, economic, psychological, and health outcomes 
 
 <hr>
 
 ### Why?
 
-- Make forecasts to increased preparadness
-- Test plausibility of forecasts made with other methods
+In April 2020, a significant portion of the world's population is adversely affected by pandemic mitigation actions. Public policy is optimized towards public health outcomes, at the expense of economics and psychological effects. Pandemik provides a highly accessible and scientifically robust way to optimize towards economic and psychological outcomes, without compromising public health benefits.
+
+Example use-cases include:
+
+- Plan for policy that optimize balance between public health, economic, and psychological outcomes
+- Demonstrate the value of different behaviors and mitigations
 
 <hr>
 
