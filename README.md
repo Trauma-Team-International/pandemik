@@ -115,4 +115,5 @@ If you use ICUSIM for published work, please cite:
 [MIT License](https://github.com/autonomio/pandemik/blob/master/LICENSE)
 
 [github issue tracker]: https://github.com/automio/pandemik/issues
+[discord chat]: https://discord.gg/p6C2Ju
 
