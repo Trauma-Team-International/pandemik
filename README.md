@@ -1,6 +1,6 @@
 <h1 align="center">
   <br>
-  <a href="http://autonom.io"><img src="https://raw.githubusercontent.com/autonomio/ICUSIM/master/logo.png" alt="Pandemik" width="250"></a>
+  <a href="http://autonom.io"><img src="https://raw.githubusercontent.com/autonomio/pandemik/master/assets/logo.png" alt="Pandemik" width="250"></a>
   <br>
 </h1>
 
