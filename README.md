@@ -29,7 +29,9 @@ Pandemik helps researchers and decision makers answer the question **_"which beh
 
 Pandemik brings together gold standard behavior change, epidemic, and capacity modelling capabilities into an end-to-end simulation pipeline. The modelling pipeline connects behavior change and mitigation actions with public health, economic, and psychological outcomes. 
 
-A [recent study](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3561560) suggests that non-pharmaceutical interventions (NPIs) can lead to favorable economic outcomes when appropriately planned. 
+A [recent study](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3561560) suggests that non-pharmaceutical interventions (NPIs) can lead to favorable economic outcomes when appropriately planned. These findings suggest that it's possible to optimize mitigation efforts in a manner that is favorable towards the epidemic and economics. 
+
+In our research, we have found broad discrapency between behaviors in terms of the associated negative economic and psychological even though the difference in epidemic effect may be insignificant. 
 
 ### How? 
 
@@ -70,125 +72,25 @@ Example use-cases include:
 
 ### How?
 
-ICUSIM follows a straightforward logic:
+Pandemik is dead simple to use. You start by planning your inputs in terms of the behaviors you want to target.
 
-- There is a certain number of patients to start with
-- Patients are split between standard and ventilated ICU
-- Patients can not move between standard and ventilated ICU
-- New patients come in based on `doubles_in_days` input parameter
-- As new patients come in, each is assigned with a probability to survive
-- As new patients come in, each is assigned a stay duration
-- Released or dead, it happens when stay duration is completed
-- If there is less capacity than there is demand, patients will die accordingly
+**Inputs:**
 
-Outcomes are controlled through **Input Parameters**, which are provided separately for _standard ICU_ and _ventilated ICU_.
+- Choose country to model
+- Set the degree of restriction (0-100) to one or more +50 relevant behaviors
+- Set the time period to simulate (number of days)
+- Set the degree of confidence that is acceptable (affects running time / compute requirement) 
 
-name | type | description
---- | --- | --- 
-`initial_patient_count` | int | the number of patients to start with
-`days_to_simulate` | int | number of days to simulate
-`total_capacity_min` | int | minimum for total available capacity
-`total_capacity_max` | int | maximum for total available capacity
-`ventilated_icu_share_min` | float | minimum for ventilated capacity
-`ventilated_icu_share_max` | float | maximum for ventilated capacity
-`standard_cfr_min` | float | minimum case fatality rate for standard ICU
-`standard_cfr_max` | float | maximum case fatality rate for standard ICU
-`ventilated_cfr_min` | float | minimum case fatality rate for ventilated ICU
-`ventilated_cfr_max` | float | maximum case fatality rate for ventilated ICU
-`standard_duration_min` | float | minimum mean duration for standard ICU stay
-`standard_duration_max` | float | maximum mean duration for standard ICU stay
-`ventilated_duration_factor_min` | float | minimum ratio for ventilated capacity per standard standard 
-`ventilated_duration_factor_max` | float | maximum ratio for ventilated capacity per standard standard 
-`doubles_in_days_min` | float | minimum number of days it takes for exponental growth to happen 
-`doubles_in_days_max` | float | maximum number of days it takes for eponental growth to happen
-`ventilation_rate_min` | float | minimum rate at which ventilation is required
-`ventilation_rate_max` | float | maximum rate at which ventilation is required
-`show_params` | bool | prints out the parameters if True
+**Output:**
 
-<hr>
+- Total economic damage
+- Total psychological damage
+- Total infected
+- Total hospitalized / standard ICU / ventilated
+- Total fatalities
+- Effect of each behavior (sensitivity to each outcome)
+- Recommended behavior plan
 
-### 💾 Install
-
-Released version:
-
-#### `pip install icusim`
-
-Daily development version:
-
-#### `pip install git+https://github.com/autonomio/ICUSIM`
-
-<hr>
-
-### Start Simulating
-
-To run a simulation, you need two things:
-
-- parameter dictionary
-- `icusim.MonteCarlo()` command
-
-Make sure to follow parameter ranges that you can established with available empirical evidence. A fully functional example that is relevant for Finland is provided below. You can simply change the values to meet the evidence for the area/s of your interest.
-
-```
-params = {'initial_patient_count': 80,
-          'days_to_simulate': 50,
-          'total_capacity_min': 200,
-          'total_capacity_max': 1000,
-          'ventilated_icu_share_min': .4,
-          'ventilated_icu_share_max': .6,
-          'standard_cfr_min': 0.2,
-          'standard_cfr_max': 0.6,
-          'ventilated_cfr_min': 1.3,
-          'ventilated_cfr_max': 1.7,
-          'standard_duration_min': 8.5,
-          'standard_duration_max': 25.5,
-          'ventilated_duration_factor_min': .9,
-          'ventilated_duration_factor_max': 1.1,
-          'doubles_in_days_min': 2.0,
-          'doubles_in_days_max': 12.0,
-          'ventilation_rate_min': 0.3,
-          'ventilation_rate_max': 0.8}
-```
-Next you can start the simulation: 
-
-```
-import icusim
-results = icusim.MonteCarlo(rounds=1000, params)
-```
-
-Access the results of the simulation: 
-
-```
-results.df
-```
-
-If you want to also perform **sensitivity analysis**: 
-
-```
-import icusim
-results = icusim.SobolSensitivity(rounds=1000, params)
-```
-
-Once the rounds are completed, get the sensitivities: 
-
-```
-results.sensitivity('metric_name')
-```
-
-
-You can also run a single round simulation with **daily output**: 
-
-```
-import icusim
-
-params = icusim.params()
-icusim.simulate(params)
-```
-
-Draw a **histogram** for analyzing the results:
-
-```
-astetik.hist(df, 'ventilated_icu_total_demand')
-```
 <hr>
 
 ### 💬 How to get Support
@@ -207,13 +109,13 @@ astetik.hist(df, 'ventilated_icu_total_demand')
 
 If you use ICUSIM for published work, please cite:
 
-`Autonomio's ICUSIM [Computer software]. (2020). Retrieved from http://github.com/autonomio/ICUSIM.`
+`Autonomio's Pandemik [Computer software]. (2020). Retrieved from http://github.com/autonomio/pandemik.`
 
 <hr>
 
 ### 📃 License
 
-[MIT License](https://github.com/autonomio/talos/blob/master/LICENSE)
+[MIT License](https://github.com/autonomio/pandemik/blob/master/LICENSE)
 
-[github issue tracker]: https://github.com/automio/talos/issues
+[github issue tracker]: https://github.com/automio/pandemik/issues
 
