@@ -17,7 +17,7 @@
 </p>
 <hr>
 <p align="center">
-Pandemik is an end-to-end pipeline for simulating behavior change and mitigation effects on <b>public health, economic, and psychological</b> outcomes**.</p>
+Pandemik is an end-to-end pipeline for simulating behavior change and mitigation effects on <b>public health, economic, and psychological</b> outcomes.</p>
 <hr>
 
 ### What?
