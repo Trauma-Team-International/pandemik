@@ -3,7 +3,7 @@
 # initiate the scoring
 hp = HofstedePlus()
 
-# set custom weights
+# set default weights (this makes sense only for test)
 hp.set_weights()
 
 # set randomess
