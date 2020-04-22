@@ -1,4 +1,4 @@
-participant_id,age,house_hold_size,contact_home,contact_work,contact_school,contact_transport,contact_leisure,contact_other,gender_female,gender_male,country_be,country_de,country_fi,country_gb,country_it,country_lu,country_nl,country_pl
+participant_id,age,household_size,contact_home,contact_work,contact_school,contact_transport,contact_leisure,contact_other,gender_female,gender_male,country_be,country_de,country_fi,country_gb,country_it,country_lu,country_nl,country_pl
 1,42,3,1,0,0,0,0,0,1,0,0,0,0,0,1,0,0,0
 1,9,3,0,0,1,0,0,0,1,0,0,0,0,0,1,0,0,0
 1,42,3,0,0,0,0,1,0,1,0,0,0,0,0,1,0,0,0
