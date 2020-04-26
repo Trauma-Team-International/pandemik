@@ -6,11 +6,7 @@ class Polymod:
         
         import pandas as _pd
         
-        if data is not None:
-            self.data = data
-        else:
-            self.data = _pd.read_csv(_url)
-            True
+        self.data = _pd.read_csv(_url)
 
     def country_data(self, country_code='fi'):
 
@@ -92,10 +88,13 @@ class Polymod:
                              population_size=1000,
                              country_code='fi',
                              multiplier=1,
-                             age_distribution=[15, 65, 20]):
+                             age_distribution=[15, 65, 20],
+                             restrictions=[0,0,0,0,0,0]):
         
         import random
         import numpy as np
+        
+        restrictions = np.array(restrictions)
         
         self._build_age_groups(country_code)
         self._build_population(population_size=population_size, age_distribution=age_distribution)
@@ -106,14 +105,14 @@ class Polymod:
         adult = (self.population == 2).sum() * multiplier
         elderly = (self.population == 3).sum() * multiplier
 
-        young_picks = self._build_contacts(self.age_young).values
-        adult_picks = self._build_contacts(self.age_adult).values
-        elderly_picks = self._build_contacts(self.age_elderly).values
+        young_picks = self._build_contacts(self.age_young).values * (1 - restrictions)
+        adult_picks = self._build_contacts(self.age_adult).values * (1 - restrictions)
+        elderly_picks = self._build_contacts(self.age_elderly).values * (1 - restrictions)
 
         out = random.choices(young_picks.tolist(), k=young)
         out += random.choices(adult_picks.tolist(), k=adult)
         out += random.choices(elderly_picks.tolist(), k=elderly)
 
-        return np.array(out).sum(0)
+        return [int(i) for i in np.array(out).sum(0)]
      
 p = Polymod()
